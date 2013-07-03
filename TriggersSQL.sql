@@ -462,16 +462,6 @@ DELIMITER $$
 CREATE TRIGGER gol_insert AFTER INSERT ON gol FOR EACH ROW
 BEGIN
     
-    set @equipo = (select id_equipo from jugador where id_jugador like new.id_jugador);
-    set @idlocal = (select id_local from partido where id_partido like new.id_partido);
-    set @idvisitante = (select id_visitante from partido where id_partido like new.id_partido);
-    
-    
-    IF(@equipo like @idlocal) THEN update partido set goles_local=goles_local+1 where id_partido like new.id_partido;
-    ELSEIF(@equipo like @idvisitante) THEN update partido set goles_visitante=goles_visitante+1 where id_partido like new.id_partido;
-    END IF;
-    
-
     update jugador set goles_jugador=goles_jugador+1 where id_jugador like new.id_jugador; 
     
 END;
