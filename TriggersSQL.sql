@@ -531,17 +531,10 @@ BEGIN
 		FETCH actualizar_posiciones INTO id2, puntaje2, dif2;
 		IF puntaje2 = puntaje1 THEN
 			UPDATE posicion 
-<<<<<<< HEAD
-				SET pos = cont-1 WHERE id_equipo = id2 and id_campeonato like new.id_campeonato;
-		ELSE 
-			UPDATE posicion 
-				SET pos = cont WHERE id_equipo = id2 and id_campeonato like new.id_campeonato;
-=======
 				SET pos = cont-1 WHERE id_equipo = id2 and id_campeonato = new.id_campeonato;
 		ELSE 
 			UPDATE posicion 
 				SET pos = cont WHERE id_equipo = id2 and id_campeonato = new.id_campeonato;
->>>>>>> Vistas Felipe UPDATE y Triggers Fixed Milder
 			SET cont = cont + 1;
 		END IF;
 		SET id1 = id2;
